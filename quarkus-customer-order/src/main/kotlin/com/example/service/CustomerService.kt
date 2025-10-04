@@ -1,5 +1,6 @@
 package com.example.service
 
+import com.example.messaging.CustomerMessageProducer
 import com.example.model.Customer
 import com.example.model.Order
 import com.example.repository.CustomerRepository
@@ -17,6 +18,9 @@ class CustomerService {
     @Inject
     lateinit var orderRepository: OrderRepository
 
+    @Inject
+    lateinit var customerMessageProducer: CustomerMessageProducer
+
     fun getAllCustomers(): List<Customer> = customerRepository.listAll()
 
     fun getCustomerById(id: Long): Customer? = customerRepository.findById(id)
@@ -24,6 +28,7 @@ class CustomerService {
     @Transactional
     fun createCustomer(customer: Customer): Customer {
         customerRepository.persist(customer)
+        customerMessageProducer.sendCustomerCreationMessage(customer)
         return customer
     }
 

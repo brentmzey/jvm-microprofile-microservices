@@ -60,17 +60,19 @@ To run the required databases, a `docker-compose.yml` file is provided in the pa
 
 ## API Endpoints
 
-- `GET /customers`: Get all customers.
-- `GET /customers/{id}`: Get a customer by ID.
-- `POST /customers`: Create a new customer.
+All endpoints are now versioned under `/api/v1`.
+
+- `GET /api/v1/customers`: Get all customers.
+- `GET /api/v1/customers/{id}`: Get a customer by ID.
+- `POST /api/v1/customers`: Create a new customer.
   ```json
   {
     "name": "New Customer",
     "email": "new@customer.com"
   }
   ```
-- `GET /customers/{id}/orders`: Get all orders for a customer.
-- `POST /customers/{id}/orders`: Create a new order for a customer.
+- `GET /api/v1/customers/{id}/orders`: Get all orders for a customer.
+- `POST /api/v1/customers/{id}/orders`: Create a new order for a customer.
   ```json
   {
     "description": "A new widget",
@@ -78,3 +80,9 @@ To run the required databases, a `docker-compose.yml` file is provided in the pa
     "date": "2025-10-02"
   }
   ```
+
+## API Documentation
+
+This project uses SpringDoc to generate OpenAPI documentation. When the application is running, you can access the Swagger UI at:
+
+[http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
