@@ -1,0 +1,4 @@
+CREATE DATABASE spring_db;
+CREATE DATABASE quarkus_db;
+GRANT ALL PRIVILEGES ON DATABASE spring_db TO "user";
+GRANT ALL PRIVILEGES ON DATABASE quarkus_db TO "user";
